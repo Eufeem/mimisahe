@@ -1,5 +1,6 @@
 package com.feem.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GenericAttributes {
@@ -8,7 +9,6 @@ public class GenericAttributes {
 	private String name;
 	private Date modificationDate;
 	private Date creationDate;
-
 	public String getCode() {
 		return code;
 	}
@@ -39,6 +39,16 @@ public class GenericAttributes {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public String getCreationDateFormat() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(creationDate);
+	}
+
+	public String getModificationDateFormat() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(modificationDate);
 	}
 
 }

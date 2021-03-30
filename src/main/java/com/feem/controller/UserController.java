@@ -22,6 +22,7 @@ import com.feem.model.User;
 import com.feem.service.UserService;
 import com.google.gson.Gson;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -29,13 +30,11 @@ public class UserController {
 	@Autowired private UserService userService;
 
 	@GetMapping
-	@CrossOrigin(origins = "*")
 	public List<User> get() {
 		return userService.get();
 	}
 	
 	@PostMapping
-	@CrossOrigin(origins = "*")
 	public ResponseEntity<Object> insert(@RequestBody User user) {
 		try {
 			userService.insert(user);
@@ -46,7 +45,6 @@ public class UserController {
 	}
 	
 	@PutMapping
-	@CrossOrigin(origins = "*")
 	public ResponseEntity<Object> update(@RequestBody User user) {
 		try {
 			userService.update(user);
@@ -57,7 +55,6 @@ public class UserController {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	@CrossOrigin(origins = "*")
 	public ResponseEntity<Object> delete(@PathVariable("id") Integer idUser) {
 		try {
 			userService.delete(idUser);

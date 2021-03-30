@@ -1,6 +1,6 @@
 package com.feem.security;
 
-public class FEEMSS {
+public class MainSecurity {
 
 	
 	

@@ -3,7 +3,7 @@ package com.feem.model;
 public class Role extends GenericAttributes {
 
 	private Integer idRole;
-	private Function function;
+	private Integer status;
 
 	public Role() { super(); }
 
@@ -15,12 +15,14 @@ public class Role extends GenericAttributes {
 		this.idRole = idRole;
 	}
 
-	public Function getFunction() {
-		return function;
+	public Integer getStatus() {
+		return status;
 	}
 
-	public void setFunction(Function function) {
-		this.function = function;
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
+	
+	
 
 }

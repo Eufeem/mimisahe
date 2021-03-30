@@ -20,18 +20,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void insert(User user) {
-		userDAO.insert(user);
+	public void insert(User model) {
+		userDAO.insert(model);
 	}
 
 	@Override
-	public void update(User user) {
-		userDAO.update(user);
+	public void update(User model) {
+		userDAO.update(model);
 	}
 
 	@Override
-	public void delete(Integer idUser) {
-		userDAO.delete(idUser);
+	public void delete(Integer id) {
+		userDAO.delete(id);
 	}
 
 }

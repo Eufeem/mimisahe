@@ -30,6 +30,7 @@ public class Constants {
 	public static final String SQL_DELETE_FROM = " DELETE FROM ";
 	
 	public static final String TABLE_USER = " T_USER ";
+	public static final String TABLE_ROLE = " T_ROLE ";
 	
 	
 }
