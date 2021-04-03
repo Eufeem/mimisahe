@@ -18,26 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.feem.helper.Constants;
 import com.feem.helper.HttpResponse;
-import com.feem.model.Role;
-import com.feem.service.RoleService;
+import com.feem.model.Function;
+import com.feem.service.FunctionService;
 import com.google.gson.Gson;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/role")
-public class RoleController {
-	
-	@Autowired private RoleService roleService;
+@RequestMapping("/function")
+public class FunctionController {
+
+	@Autowired private FunctionService functionService;
 
 	@GetMapping
-	public List<Role> get() {
-		return roleService.get();
+	public List<Function> get() {
+		return functionService.get();
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> insert(@RequestBody Role model) {
+	public ResponseEntity<Object> insert(@RequestBody Function model) {
 		try {
-			roleService.insert(model);
+			functionService.insert(model);
 			return new ResponseEntity<>(new Gson().toJson(new HttpResponse(Constants.MESSAGE_SUCCESS, HttpStatus.OK.value())), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(new Gson().toJson(new HttpResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value())), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -45,9 +45,9 @@ public class RoleController {
 	}
 	
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> update(@RequestBody Role model) {
+	public ResponseEntity<Object> update(@RequestBody Function model) {
 		try {
-			roleService.update(model);
+			functionService.update(model);
 			return new ResponseEntity<>(new Gson().toJson(new HttpResponse(Constants.MESSAGE_SUCCESS, HttpStatus.OK.value())), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(new Gson().toJson(new HttpResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value())), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -57,7 +57,7 @@ public class RoleController {
 	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> delete(@PathVariable("id") Integer id) {
 		try {
-			roleService.delete(id);
+			functionService.delete(id);
 			return new ResponseEntity<>(new Gson().toJson(new HttpResponse(Constants.MESSAGE_SUCCESS, HttpStatus.OK.value())), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(new Gson().toJson(new HttpResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value())), HttpStatus.INTERNAL_SERVER_ERROR);

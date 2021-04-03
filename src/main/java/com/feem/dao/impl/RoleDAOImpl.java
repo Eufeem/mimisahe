@@ -29,7 +29,7 @@ public class RoleDAOImpl implements RoleDAO {
 		sql.append(Constants.SQL_FROM);
 		sql.append(Constants.TABLE_ROLE);
 		
-		logger.info("Get => {}", sql);
+		logger.info("GET: {}", sql);
 
 		return jdbcTemplate.query(sql.toString(), new RoleMapper());
 	}
@@ -64,7 +64,7 @@ public class RoleDAOImpl implements RoleDAO {
 		
 		Object[] params = { model.getName(), model.getCode(), model.getStatus() };
 		
-		logger.info("Insert => {}", sql);
+		logger.info("INSERT: {}", sql);
 		
 		jdbcTemplate.update(sql.toString(), params);
 	}
@@ -84,7 +84,7 @@ public class RoleDAOImpl implements RoleDAO {
 		
 		Object[] params = { model.getName(), model.getCode(), model.getStatus(), model.getIdRole() };
 		
-		logger.info("Update => {}", sql);
+		logger.info("UPDATE: {}", sql);
 		
 		jdbcTemplate.update(sql.toString(), params);
 	}
@@ -108,7 +108,7 @@ public class RoleDAOImpl implements RoleDAO {
 		
 		Object[] params = { status, id };
 		
-		logger.info("Delete => {}", sql);
+		logger.info("DELETE: {}", sql);
 		
 		jdbcTemplate.update(sql.toString(), params);
 	}

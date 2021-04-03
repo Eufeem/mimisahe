@@ -31,6 +31,7 @@ public class Constants {
 	
 	public static final String TABLE_USER = " T_USER ";
 	public static final String TABLE_ROLE = " T_ROLE ";
+	public static final String TABLE_FUNCTION = " T_FUNCTION ";
 	
 	
 }

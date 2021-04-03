@@ -9,6 +9,8 @@ public class GenericAttributes {
 	private String name;
 	private Date modificationDate;
 	private Date creationDate;
+	private Integer status;
+	
 	public String getCode() {
 		return code;
 	}
@@ -49,6 +51,14 @@ public class GenericAttributes {
 	public String getModificationDateFormat() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return dateFormat.format(modificationDate);
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 }
