@@ -23,10 +23,8 @@ public class Constants {
 	
 	public static final String SQL_INSERT_INTO = " INSERT INTO ";
 	public static final String SQL_VALUES = " VALUES ";
-	
 	public static final String SQL_UPDATE = " UPDATE ";
 	public static final String SQL_SET = " SET ";
-	
 	public static final String SQL_DELETE_FROM = " DELETE FROM ";
 	
 	public static final String TABLE_USER = " T_USER ";
