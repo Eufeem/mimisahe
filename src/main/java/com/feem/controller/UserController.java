@@ -34,6 +34,11 @@ public class UserController {
 		return userService.get();
 	}
 	
+	@GetMapping("/{id}")
+	public User findByid(@PathVariable Integer id) {
+		return userService.findById(id);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Object> insert(@RequestBody User user) {
 		try {

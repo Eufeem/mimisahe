@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User findById(Integer id) {
+		return userDAO.findById(id);
+	}
+	
+	@Override
 	public void insert(User model) {
 		userDAO.insert(model);
 	}

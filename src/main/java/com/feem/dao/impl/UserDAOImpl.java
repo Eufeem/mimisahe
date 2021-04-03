@@ -30,8 +30,21 @@ public class UserDAOImpl implements UserDAO {
 		sql.append(Constants.TABLE_USER);
 		
 		logger.info("GET: {}", sql);
-
 		return jdbcTemplate.query(sql.toString(), new UserMapper());
+	}
+	
+	@Override
+	public User findById(Integer id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(Constants.SQL_SELECT);
+		sql.append(" * ");
+		sql.append(Constants.SQL_FROM);
+		sql.append(Constants.TABLE_USER);
+		sql.append(Constants.SQL_WHERE);
+		sql.append(" id_user = ?  ");
+		
+		logger.info("FIND BY ID: {}", sql);
+		return jdbcTemplate.queryForObject(sql.toString(), new UserMapper(), id);
 	}
 
 	private class UserMapper implements RowMapper<User> {
@@ -65,9 +78,7 @@ public class UserDAOImpl implements UserDAO {
 		sql.append(" (?, ?, ?, ?, SYSDATE(), SYSDATE()) ");
 		
 		Object[] params = { model.getName(), model.getLastName(), model.getCodeUser(), model.getStatus() };
-		
 		logger.info("INSERT: {}", sql);
-		
 		jdbcTemplate.update(sql.toString(), params);
 	}
 
@@ -86,9 +97,7 @@ public class UserDAOImpl implements UserDAO {
 		sql.append(" id_user = ? ");
 		
 		Object[] params = { model.getName(), model.getLastName(), model.getCodeUser(), model.getStatus(), model.getIdUser() };
-		
 		logger.info("UPDATE: {}", sql);
-		
 		jdbcTemplate.update(sql.toString(), params);
 	}
 
@@ -110,9 +119,7 @@ public class UserDAOImpl implements UserDAO {
 		sql.append(" id_user = ? ");
 		
 		Object[] params = { status, id };
-		
 		logger.info("DELETE: {}", sql);
-		
 		jdbcTemplate.update(sql.toString(), params);
 	}
 
