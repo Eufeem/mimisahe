@@ -18,6 +18,11 @@ public class FunctionServiceImpl implements FunctionService {
 	public List<Function> get() {
 		return functionDAO.get();
 	}
+	
+	@Override
+	public Function findById(Integer id) {
+		return functionDAO.findById(id);
+	}
 
 	@Override
 	public void insert(Function model) {

@@ -11,18 +11,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.feem.dao.RoleDAO;
+import com.feem.dao.TypeProductDAO;
 import com.feem.helper.Constants;
-import com.feem.model.Role;
+import com.feem.model.TypeProduct;
 
 @Repository
-public class RoleDAOImpl implements RoleDAO {
+public class TypeProductDAOImpl implements TypeProductDAO {
 
 	@Autowired private JdbcTemplate jdbcTemplate;
 	private static final Logger logger = LogManager.getLogger(RoleDAOImpl.class);
 	
 	@Override
-	public List<Role> get() {
+	public List<TypeProduct> get() {
 		StringBuilder sql = new StringBuilder();
 		sql.append(Constants.SQL_SELECT);
 		sql.append(" * ");
@@ -31,11 +31,11 @@ public class RoleDAOImpl implements RoleDAO {
 		
 		logger.info("GET: {}", sql);
 
-		return jdbcTemplate.query(sql.toString(), new RoleMapper());
+		return jdbcTemplate.query(sql.toString(), new TypeProductMapper());
 	}
 	
 	@Override
-	public Role findById(Integer id) {
+	public TypeProduct findById(Integer id) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(Constants.SQL_SELECT);
 		sql.append(" * ");
@@ -45,13 +45,13 @@ public class RoleDAOImpl implements RoleDAO {
 		sql.append(" id_role = ?  ");
 		
 		logger.info("FIND BY ID: {}", sql);
-		return jdbcTemplate.queryForObject(sql.toString(), new RoleMapper(), id);
+		return jdbcTemplate.queryForObject(sql.toString(), new TypeProductMapper(), id);
 	}
 
-	private class RoleMapper implements RowMapper<Role> {
-		public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Role model = new Role();
-			model.setIdRole(rs.getInt("id_role"));
+	private class TypeProductMapper implements RowMapper<TypeProduct> {
+		public TypeProduct mapRow(ResultSet rs, int rowNum) throws SQLException {
+			TypeProduct model = new TypeProduct();
+			model.setIdTypeProduct(rs.getInt("id_role"));
 			model.setName(rs.getString("name"));
 			model.setCode(rs.getString("code"));
 			model.setStatus(rs.getInt("status"));
@@ -62,7 +62,7 @@ public class RoleDAOImpl implements RoleDAO {
 	}
 
 	@Override
-	public void insert(Role model) {
+	public void insert(TypeProduct model) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(Constants.SQL_INSERT_INTO);
 		sql.append(Constants.TABLE_ROLE);
@@ -84,7 +84,7 @@ public class RoleDAOImpl implements RoleDAO {
 	}
 
 	@Override
-	public void update(Role model) {
+	public void update(TypeProduct model) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(Constants.SQL_UPDATE);
 		sql.append(Constants.TABLE_ROLE);
@@ -96,7 +96,7 @@ public class RoleDAOImpl implements RoleDAO {
 		sql.append(Constants.SQL_WHERE);
 		sql.append(" id_role = ? ");
 		
-		Object[] params = { model.getName(), model.getCode(), model.getStatus(), model.getIdRole() };
+		Object[] params = { model.getName(), model.getCode(), model.getStatus(), model.getIdTypeProduct() };
 		
 		logger.info("UPDATE: {}", sql);
 		

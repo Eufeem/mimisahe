@@ -80,7 +80,7 @@ public class FunctionDAOImpl implements FunctionDAO {
 		sql.append(" status = ?, ");
 		sql.append(" modificationDate = SYSDATE() ");
 		sql.append(Constants.SQL_WHERE);
-		sql.append(" id_role = ? ");
+		sql.append(" id_function = ? ");
 		
 		Object[] params = { model.getName(), model.getCode(), model.getStatus(), model.getIdFunction() };
 		
@@ -111,6 +111,20 @@ public class FunctionDAOImpl implements FunctionDAO {
 		logger.info("DELETE: {}", sql);
 		
 		jdbcTemplate.update(sql.toString(), params);
+	}
+
+	@Override
+	public Function findById(Integer id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(Constants.SQL_SELECT);
+		sql.append(" * ");
+		sql.append(Constants.SQL_FROM);
+		sql.append(Constants.TABLE_FUNCTION);
+		sql.append(Constants.SQL_WHERE);
+		sql.append(" id_function = ?  ");
+		
+		logger.info("FIND BY ID: {}", sql);
+		return jdbcTemplate.queryForObject(sql.toString(), new FunctionMapper(), id);
 	}
 
 }

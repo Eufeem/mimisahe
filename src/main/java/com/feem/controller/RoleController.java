@@ -34,6 +34,11 @@ public class RoleController {
 		return roleService.get();
 	}
 	
+	@GetMapping("/{id}")
+	public Role findByid(@PathVariable Integer id) {
+		return roleService.findById(id);
+	}
+	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> insert(@RequestBody Role model) {
 		try {

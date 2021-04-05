@@ -34,6 +34,11 @@ public class FunctionController {
 		return functionService.get();
 	}
 	
+	@GetMapping("/{id}")
+	public Function findByid(@PathVariable Integer id) {
+		return functionService.findById(id);
+	}
+	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> insert(@RequestBody Function model) {
 		try {

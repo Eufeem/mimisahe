@@ -18,6 +18,11 @@ public class RoleServiceImpl implements RoleService {
 	public List<Role> get() {
 		return roleDAO.get();
 	}
+	
+	@Override
+	public Role findById(Integer id) {
+		return roleDAO.findById(id);
+	}
 
 	@Override
 	public void insert(Role model) {
